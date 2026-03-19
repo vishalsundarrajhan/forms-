@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Register for therapy sessions at RK Hospital. Providing premium and compassionate care.">
+    <title>RK Hospital | Therapy Registration</title>
+
+    <!-- Google Fonts: Outfit for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <main class="page-wrapper">
+        <!-- Abstract gradient background element -->
+        <div class="background-canvas"></div>
+
+        <div class="registration-container">
+            <header class="form-header">
+                <div class="logo-wrapper">
+                    <span class="logo-icon">+</span>
+                    <h1>RK Hospital</h1>
+                </div>
+                <h2>Therapy Registration</h2>
+                <p>Begin your journey to well-being with our expert care team.</p>
+            </header>
+
+            <form id="therapyRegistrationForm" class="therapy-form" novalidate>
+
+                <!-- Personal Info Section -->
+                <section class="form-section">
+                    <h3>Personal Details</h3>
+                    <div class="input-group split">
+                        <div class="input-wrapper">
+                            <input type="text" id="firstName" name="firstName" required aria-label="First Name"
+                                placeholder=" ">
+                            <label for="firstName">First Name</label>
+                            <span class="error-text">Please enter your first name</span>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="lastName" name="lastName" required aria-label="Last Name"
+                                placeholder=" ">
+                            <label for="lastName">Last Name</label>
+                            <span class="error-text">Please enter your last name</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" required aria-label="Email Address"
+                                placeholder=" ">
+                            <label for="email">Email Address</label>
+                            <span class="error-text">Please enter a valid email</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <input type="tel" id="phone" name="phone" required aria-label="Phone Number"
+                                pattern="[0-9]{10}" placeholder=" ">
+                            <label for="phone">Phone Number</label>
+                            <span class="error-text">Please enter a 10-digit phone number</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Therapy Info Section -->
+                <section class="form-section">
+                    <h3>Therapy Details</h3>
+                    <div class="input-group">
+                        <div class="select-wrapper">
+                            <select id="therapyType" name="therapyType" required aria-label="Type of Therapy">
+                                <option value="" disabled selected>Select Therapy Type</option>
+                                <option value="cognitive">Cognitive Behavioral Therapy (CBT)</option>
+                                <option value="physical">Physical Therapy</option>
+                                <option value="occupational">Occupational Therapy</option>
+                                <option value="speech">Speech Therapy</option>
+                                <option value="family">Family & Couples Counseling</option>
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group split">
+                        <div class="input-wrapper">
+                            <input type="date" id="preferredDate" name="preferredDate" required
+                                aria-label="Preferred Date">
+                            <label for="preferredDate" class="active-label">Preferred Date</label>
+                            <span class="error-text">Please select a valid date</span>
+                        </div>
+                        <div class="select-wrapper">
+                            <select id="preferredTime" name="preferredTime" required aria-label="Preferred Time">
+                                <option value="" disabled selected>Select Time Slot</option>
+                                <option value="morning">Morning (8 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                                <option value="evening">Evening (4 PM - 8 PM)</option>
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <textarea id="additionalNotes" name="additionalNotes" rows="3" aria-label="Additional Notes"
+                                placeholder=" "></textarea>
+                            <label for="additionalNotes">Any specific concerns or symptoms?</label>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn" class="primary-btn">
+                        <span class="btn-text">Submit Registration</span>
+                        <div class="btn-spinner"></div>
+                    </button>
+                </div>
+            </form>
+
+            <div id="successMessage" class="success-screen hidden">
+                <div class="success-icon">✓</div>
+                <h3>Registration Successful</h3>
+                <p>Thank you for choosing RK Hospital. Our care team will contact you shortly to confirm your
+                    appointment.</p>
+                <button id="resetBtn" class="secondary-btn">Register Another Patient</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="currentYear"></span> RK Hospital. All rights reserved.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
