@@ -1,13 +1,13 @@
 :root {
-    /* Color Palette */
-    --clr-bg: #1c1917; /* Warm dark gray */
-    --clr-surface: rgba(26, 26, 26, 0.4);
-    --clr-surface-hover: rgba(255, 255, 255, 0.08);
-    --clr-primary: #eab308; /* Yellow 500 */
-    --clr-primary-hover: #ca8a04; /* Yellow 600 */
-    --clr-accent: #facc15; /* Yellow 400 */
-    --clr-text: #f8fafc;
-    --clr-text-muted: #d6d3d1;
+    /* Color Palette - Deep Purple Theme */
+    --clr-bg: #2e1065;
+    --clr-surface: rgba(255, 255, 255, 0.1);
+    --clr-surface-hover: rgba(255, 255, 255, 0.15);
+    --clr-primary: #a855f7;
+    --clr-primary-hover: #9333ea;
+    --clr-accent: #d8b4fe;
+    --clr-text: #fdf4ff;
+    --clr-text-muted: #d8b4fe;
     --clr-error: #ef4444;
     --clr-success: #10b981;
 
@@ -30,7 +30,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Baloo 2', 'Inter', sans-serif;
     background-color: var(--clr-bg);
     color: var(--clr-text);
     min-height: 100vh;
@@ -47,13 +47,8 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: radial-gradient(circle at top right, var(--clr-primary) 0%, var(--clr-bg) 80%);
     z-index: -1;
-    /* Ensure the image doesn't overload the text */
-    filter: brightness(0.6) saturate(1.2);
 }
 
 .page-wrapper {
@@ -545,7 +540,7 @@ input[type="date"] {
 .bubble {
     position: absolute;
     bottom: -150px;
-    background: rgba(250, 204, 21, 0.15); /* Yellow overlay bubble */
+    background: rgba(168, 85, 247, 0.2); /* Purple overlay bubble */
     border-radius: 50%;
     animation: floatUp 10s infinite ease-in;
 }
@@ -574,4 +569,41 @@ input[type="date"] {
         transform: translateY(-120vh) scale(1.5);
         opacity: 0;
     }
+}
+
+/* Chhota Bheem standing styling */
+.bheem-mascot {
+    position: absolute;
+    bottom: 0px; 
+    left: -200px; /* Stand to the left of the form */
+    width: 220px;
+    height: auto;
+    z-index: 10;
+    opacity: 0;
+    border-radius: var(--radius-md); /* Smooth edges */
+    animation: walkInMascot 0.8s ease-out 0.8s forwards;
+}
+
+@keyframes walkInMascot {
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Applied typography overrides globally */
+.form-header h1, .form-header h2, .form-section h3, .primary-btn {
+    font-family: 'Fredoka', 'Outfit', sans-serif;
+}
+
+@media (max-width: 840px) {
+    .bheem-mascot {
+        left: 50%;
+        top: -160px;
+        bottom: auto;
+        width: 140px;
+        animation: dropInMascot 0.8s ease-out 0.8s forwards;
+    }
+}
+@keyframes dropInMascot {
+    0% { transform: translate(-50%, -50px); opacity: 0; }
+    100% { transform: translate(-50%, 0); opacity: 1; }
 }
