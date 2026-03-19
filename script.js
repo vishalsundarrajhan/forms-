@@ -104,14 +104,37 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.classList.remove('loading');
             submitBtn.disabled = false;
 
-            // Hide form and show success
+            // Hide form and show doctor selection screen
             form.style.display = 'none';
-            successMessage.classList.remove('hidden');
-
-            // Scroll to top of container smoothly
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const doctorScreen = document.getElementById('doctorSelectionScreen');
+            if(doctorScreen) {
+                doctorScreen.classList.remove('hidden');
+                doctorScreen.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                successMessage.classList.remove('hidden');
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
 
         }, 1500);
+    });
+
+    // Doctor Selection Logic
+    const doctorCards = document.querySelectorAll('.doctor-card');
+    const doctorScreen = document.getElementById('doctorSelectionScreen');
+
+    doctorCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Remove selected from others
+            doctorCards.forEach(c => c.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            // Wait a moment then show success
+            setTimeout(() => {
+                if(doctorScreen) doctorScreen.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 600);
+        });
     });
 
     // Reset Form for another registration
@@ -120,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
             form.reset();
             form.style.display = 'block';
             successMessage.classList.add('hidden');
+            if(doctorScreen) doctorScreen.classList.add('hidden');
+            doctorCards.forEach(c => c.classList.remove('selected'));
 
             // Clear all error states
             inputs.forEach(input => showError(input, false));
